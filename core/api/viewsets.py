@@ -1,6 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 from core.models import PontoTuristico
 from .serializers import PontoTuristicoSerializer
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.authentication import TokenAuthentication
 
 class PontoTuristicoViewSet(ModelViewSet):
     """
@@ -8,3 +10,5 @@ class PontoTuristicoViewSet(ModelViewSet):
     """
     queryset = PontoTuristico.objects.all()
     serializer_class = PontoTuristicoSerializer
+    permission_classes = (IsAuthenticated, )
+    authentication_classes = (TokenAuthentication, )

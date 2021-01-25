@@ -9,3 +9,7 @@ class Comentario(models.Model):
 
     def __str__(self):
         return self.usuario.username
+
+    @property
+    def nome_usuario(self):
+        return self.usuario.username
